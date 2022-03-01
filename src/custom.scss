@@ -1,0 +1,19 @@
+@import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400&display=swap');
+
+$background: rgb(54, 54, 58);
+$text: rgb(219, 219, 219);
+
+$light: pink !default;
+
+$body-bg: $background;
+$body-color: $text;
+
+$navbar-dark-brand-color: $text;
+$navbar-light-brand-hover-color: $text;
+
+$btn-font-weight: 400;
+
+$font-weight-base: 200;
+$main-font: Montserrat;
+$font-family-sans-serif: $main-font, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
