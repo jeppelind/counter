@@ -6,7 +6,7 @@
 }
 
 .counter-parent {
-  padding: 10px;
+  padding-top: 20px;
 }
 
 .counter {
@@ -24,10 +24,18 @@
 .counter .label {
   padding-left: 15px;
   margin: 0;
+  user-select: none;
+  width: fit-content;
+  transition: 0.3s;
+}
+.counter .label:hover {
+  text-shadow: 0 0 2px tint-color($text, 25%);
+  cursor: pointer;
 }
 
 .counter .amount {
   padding-left: 15px;
+  padding-right: 15px;
   font-weight: 100;
   font-size: 3.4rem;
   margin: 0;
@@ -36,11 +44,12 @@
 .counter .increase {
   font-size: 3rem;
   margin: 5px;
-  margin-top: 0;
+  margin-top: 3px;
   border-radius: 3px;
-  transform: 3ms;
+  transition: 0.3s;
 }
 .counter .increase:hover {
-  background-color: tint-color($background, 12%);
+  background-color: tint-color($background, 10%);
+  text-shadow: 0 0 2px tint-color($text, 25%);
   cursor: pointer;
 }
