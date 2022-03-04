@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;400&display=swap');
 @import 'colors';
 @import '~bootstrap/scss/bootstrap';
 
@@ -18,7 +18,15 @@ $modal-footer-border-color: tint-color($background, 10%);
 // Button
 $btn-font-weight: 400;
 
+// Input
+$input-color: $text;
+$input-bg: tint-color($background, 30%);
+$input-border-color: $input-bg;
+$input-focus-bg: $input-bg;
+$input-focus-color: $input-color;
+$input-focus-border-color: $input-bg;
+
 // Fonts
 $font-weight-base: 200;
-$main-font: Montserrat;
+$main-font: 'Work Sans';
 $font-family-sans-serif: $main-font, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";

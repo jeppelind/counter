@@ -3,9 +3,11 @@ import { Container } from 'react-bootstrap';
 import './Counter.scss';
 import Counter from './Counter';
 import EditCounterModal from './EditCounterModal';
+import { useAppSelector } from '../../app/hooks';
+import { selectCounterIds } from './counterSlice';
 
 const Counters = () => {
-  const fakeCounters = ['1', '2', '3'];
+  const counterIds = useAppSelector(selectCounterIds);
   const [selectedId, setSelectedId] = useState('');
   const [showEditModal, setShowEditModal] = useState(false);
 
@@ -21,7 +23,7 @@ const Counters = () => {
     <>
       <Container className='counter-parent'>
         {
-          fakeCounters.map((counter) => <Counter key={counter} id={counter} onEdit={handleShowEdit} />)
+          counterIds.map((id) => <Counter key={id} id={id.toString()} onEdit={handleShowEdit} />)
         }
       </Container>
       <EditCounterModal id={selectedId} isShowing={showEditModal} onHide={handleHideEdit} />

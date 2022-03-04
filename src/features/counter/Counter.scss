@@ -34,10 +34,13 @@
   font-weight: 100;
   font-size: 3.4rem;
   margin: 0;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.1rem;
 }
 
 .counter .increase {
   font-size: 3rem;
+  user-select: none;
   margin: 5px;
   margin-top: 3px;
   border-radius: 3px;
@@ -47,4 +50,8 @@
   background-color: tint-color($background, 10%);
   text-shadow: 0 0 2px tint-color($text, 25%);
   cursor: pointer;
+}
+
+.form-text {
+  color: shade-color($text, 20%);
 }
