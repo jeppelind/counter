@@ -12,7 +12,6 @@ const Counters = () => {
   const [showEditModal, setShowEditModal] = useState(false);
 
   const handleShowEdit = (id: string) => {
-    console.log(`Edit ${id}`);
     setSelectedId(id);
     setShowEditModal(true);
   }

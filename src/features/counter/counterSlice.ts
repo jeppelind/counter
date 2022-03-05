@@ -16,6 +16,7 @@ const counterSlice = createSlice({
   initialState: countersAdapter.getInitialState(),
   reducers: {
     addCounter: countersAdapter.addOne,
+    deleteCounter: countersAdapter.removeOne,
     updateCounter: countersAdapter.upsertOne,
     increment: countersAdapter.updateOne,
   }
@@ -28,6 +29,7 @@ export const {
 
 export const {
   addCounter,
+  deleteCounter,
   updateCounter,
   increment,
 } = counterSlice.actions;

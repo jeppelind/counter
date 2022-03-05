@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Form, Modal, Row } from 'react-bootstrap';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { selectCounterById, updateCounter } from './counterSlice';
+import { deleteCounter, selectCounterById, updateCounter } from './counterSlice';
 
 type EditCounterModalProps = {
   id: string,
@@ -29,6 +29,11 @@ const EditCounterModal = ({ id, isShowing, onHide }: EditCounterModalProps) => {
       increments,
       color: counter?.color || 'white',
     }));
+    onHide();
+  }
+
+  const handleDelete = () => {
+    dispatch(deleteCounter(id));
     onHide();
   }
 
@@ -69,8 +74,11 @@ const EditCounterModal = ({ id, isShowing, onHide }: EditCounterModalProps) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant='outline-secondary' onClick={onHide}>Close</Button>
-        <Button variant='outline-primary' disabled={!isDataValid} onClick={handleSubmit}>Save</Button>
+          <Col>
+            <Button variant='outline-danger' onClick={handleDelete}>Delete</Button>
+          </Col>
+          <Button variant='outline-secondary' onClick={onHide}>Close</Button>
+          <Button variant='outline-primary' disabled={!isDataValid} onClick={handleSubmit}>Save</Button>
       </Modal.Footer>
     </Modal>
   );
