@@ -1,2 +1,7 @@
 @import 'custom';
 @import '~bootstrap/scss/bootstrap';
+
+::selection {
+  color: $warning;
+  background: $background;
+}

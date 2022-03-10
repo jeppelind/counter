@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form, Col, Row } from 'react-bootstrap';
 import { useAppDispatch } from '../../app/hooks';
+import ColorRadioButton, { colors } from './ColorRadioButton';
 import { addCounter } from './counterSlice';
 
 type CreateCounterModalProps = {
@@ -12,6 +13,7 @@ const CreateCounterModal = ({ isShowing, onHide }: CreateCounterModalProps) => {
   const [name, setName] = useState('');
   const [amount, setAmount] = useState(0);
   const [increments, setIncrements] = useState(1);
+  const [color, setColor] = useState('white');
   const dispatch = useAppDispatch();
 
   const handleClose = () => {
@@ -27,7 +29,7 @@ const CreateCounterModal = ({ isShowing, onHide }: CreateCounterModalProps) => {
       name,
       amount,
       increments,
-      color: 'white'
+      color,
     }));
     handleClose()
   }
@@ -55,6 +57,20 @@ const CreateCounterModal = ({ isShowing, onHide }: CreateCounterModalProps) => {
               <Form.Control value={increments} onChange={(input) => setIncrements(parseInt(input.target.value))} />
               <Form.Text>Value increase when pressing "+"</Form.Text>
             </Form.Group>
+          </Row>
+          <Row className='mb-3'>
+            <Form.Label>Color</Form.Label>
+            <div key='inline-radio'>
+              {
+                colors.map((option) =>
+                  <ColorRadioButton
+                    key={option}
+                    color={option}
+                    isChecked={option === color}
+                    onChange={setColor}
+                  />)
+              }
+            </div>
           </Row>
         </Form>
       </Modal.Body>

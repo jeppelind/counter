@@ -28,6 +28,27 @@
   cursor: pointer;
 }
 
+// Setup color classes
+$colors: ('red': $red, 'blue': $blue, 'green': $green, 'yellow': $yellow,
+  'purple': $purple, 'turquoise': $turquoise);
+
+@each $name, $color in $colors {
+  .counter.#{$name} {
+    border-color: shade-color($color, 45%);
+  }
+  .counter.#{$name}:hover {
+    border-color: shade-color($color, 35%);
+  }
+
+  .radio-#{$name} input {
+    background-color: $color;
+  }
+  .radio-#{$name} input:checked {
+    border-color: $primary;
+    border-width: 3px;
+  }
+}
+
 .counter .amount {
   padding-left: 15px;
   padding-right: 15px;

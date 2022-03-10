@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Form, Modal, Row } from 'react-bootstrap';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import ColorRadioButton, { colors } from './ColorRadioButton';
 import { deleteCounter, selectCounterById, updateCounter } from './counterSlice';
 
 type EditCounterModalProps = {
@@ -15,6 +16,7 @@ const EditCounterModal = ({ id, isShowing, onHide }: EditCounterModalProps) => {
   const [name, setName] = useState('');
   const [amount, setAmount] = useState(0);
   const [increments, setIncrements] = useState(1);
+  const [color, setColor] = useState('white');
 
   const isDataValid =
     name.length > 0 &&
@@ -27,7 +29,7 @@ const EditCounterModal = ({ id, isShowing, onHide }: EditCounterModalProps) => {
       name,
       amount,
       increments,
-      color: counter?.color || 'white',
+      color,
     }));
     onHide();
   }
@@ -41,7 +43,8 @@ const EditCounterModal = ({ id, isShowing, onHide }: EditCounterModalProps) => {
     if (counter) {
       setName(counter.name);
       setAmount(counter.amount);
-      setIncrements(counter.increments)
+      setIncrements(counter.increments);
+      setColor(counter.color);
     }
   }, [counter]);
 
@@ -70,6 +73,20 @@ const EditCounterModal = ({ id, isShowing, onHide }: EditCounterModalProps) => {
               <Form.Control value={increments} onChange={(input) => setIncrements(parseInt(input.target.value))} />
               <Form.Text>Value increase when pressing "+"</Form.Text>
             </Form.Group>
+          </Row>
+          <Row className='mb-3'>
+            <Form.Label>Color</Form.Label>
+            <div key='inline-radio'>
+              {
+                colors.map((option) =>
+                  <ColorRadioButton
+                    key={option}
+                    color={option}
+                    isChecked={option === color}
+                    onChange={setColor}
+                  />)
+              }
+            </div>
           </Row>
         </Form>
       </Modal.Body>

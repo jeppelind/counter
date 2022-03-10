@@ -16,14 +16,14 @@ const Counter = ({ id, onEdit }: CounterProps) => {
     return null;
   }
 
-  const { name, amount, increments } = counter;
+  const { name, amount, increments, color } = counter;
 
   const handleEdit = () => onEdit && onEdit(id);
 
   const handleIncrement = () => dispatch(increment({id, changes: { amount: amount + increments }}));
 
   return (
-    <Row className='counter g-1'>
+    <Row className={`counter ${color} g-1`}>
       <Col xs={10}>
         <Row>
           <Col sm>

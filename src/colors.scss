@@ -4,6 +4,12 @@ $text: rgb(226, 226, 226);
 $primary: #50a4ee;
 $secondary: rgb(170, 170, 170);
 $light: $text;
+$red: #f57e7e;
+$blue: #83a4ef;
+$turquoise: #79dbd6;
+$green: #6adb6d;
+$yellow: #dbcd6a;
+$purple: #c978f3;
 
 // Tint a color: mix a color with white
 @function tint-color($color, $weight) {
