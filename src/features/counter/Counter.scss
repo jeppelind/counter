@@ -1,5 +1,32 @@
 @import '../../colors';
 
+// Setup color classes
+$colors: ('red': $red, 'blue': $blue, 'green': $green, 'yellow': $yellow,
+  'purple': $purple, 'turquoise': $turquoise, 'white': $white);
+
+@each $name, $color in $colors {
+  .counter.#{$name} {
+    border-color: shade-color($color, 45%);
+  }
+  .counter.#{$name}:hover {
+    border-color: shade-color($color, 35%);
+  }
+
+  .radio-#{$name} input {
+    background-color: $color;
+    transition: 0.2s ease-out;
+  }
+  .radio-#{$name} input:hover {
+    border-color: $color;
+    box-shadow: 0px 0px 0px 1px $color;
+  }
+  .radio-#{$name} input:checked {
+    background-color: $color;
+    border-color: tint-color($background, 25%);
+    box-shadow: 0px 0px 0px 3px $color;
+  }
+}
+
 .counter-parent {
   padding-top: 20px;
 }
@@ -17,36 +44,17 @@
 }
 
 .counter .label {
-  padding-left: 15px;
   margin: 0;
+  margin-left: 15px;
   user-select: none;
   width: fit-content;
-  transition: 0.3s;
+  background: linear-gradient(shade-color($text, 15%), shade-color($text, 15%)) 0 90%/0 1px no-repeat;
+  transition: .25s ease-out;
 }
 .counter .label:hover {
-  text-shadow: 0 0 2px tint-color($text, 25%);
+  text-shadow: 0 0 1px tint-color($text, 25%);
+  background-size: 100% 1px;
   cursor: pointer;
-}
-
-// Setup color classes
-$colors: ('red': $red, 'blue': $blue, 'green': $green, 'yellow': $yellow,
-  'purple': $purple, 'turquoise': $turquoise);
-
-@each $name, $color in $colors {
-  .counter.#{$name} {
-    border-color: shade-color($color, 45%);
-  }
-  .counter.#{$name}:hover {
-    border-color: shade-color($color, 35%);
-  }
-
-  .radio-#{$name} input {
-    background-color: $color;
-  }
-  .radio-#{$name} input:checked {
-    border-color: $primary;
-    border-width: 3px;
-  }
 }
 
 .counter .amount {
@@ -75,4 +83,11 @@ $colors: ('red': $red, 'blue': $blue, 'green': $green, 'yellow': $yellow,
 
 .form-text {
   color: shade-color($text, 20%);
+}
+
+.form-check-input:hover {
+  cursor: pointer;
+}
+.form-check-input:checked[type=radio] {
+  background-image: none;
 }

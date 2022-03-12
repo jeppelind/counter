@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Button, Col, Form, Modal, Row } from 'react-bootstrap';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import ColorRadioButton, { colors } from './ColorRadioButton';
+import ColorRadioButtons from './ColorRadioButton';
 import { deleteCounter, selectCounterById, updateCounter } from './counterSlice';
 
 type EditCounterModalProps = {
@@ -39,21 +39,30 @@ const EditCounterModal = ({ id, isShowing, onHide }: EditCounterModalProps) => {
     onHide();
   }
 
-  useEffect(() => {
+  const handleClose = () => {
+    setValuesBasedOnCounter();
+    onHide();
+  }
+
+  const setValuesBasedOnCounter = useCallback(() => {
     if (counter) {
       setName(counter.name);
       setAmount(counter.amount);
       setIncrements(counter.increments);
       setColor(counter.color);
     }
-  }, [counter]);
+  }, [counter])
+
+  useEffect(() => {
+    setValuesBasedOnCounter();
+  }, [counter, setValuesBasedOnCounter]);
 
   if (counter === undefined) {
     return null;
   }
 
   return (
-    <Modal show={isShowing} onHide={onHide}>
+    <Modal show={isShowing} onHide={handleClose}>
       <Modal.Header closeButton closeVariant='white'>
         <Modal.Title>Edit counter</Modal.Title>
       </Modal.Header>
@@ -76,17 +85,7 @@ const EditCounterModal = ({ id, isShowing, onHide }: EditCounterModalProps) => {
           </Row>
           <Row className='mb-3'>
             <Form.Label>Color</Form.Label>
-            <div key='inline-radio'>
-              {
-                colors.map((option) =>
-                  <ColorRadioButton
-                    key={option}
-                    color={option}
-                    isChecked={option === color}
-                    onChange={setColor}
-                  />)
-              }
-            </div>
+            <ColorRadioButtons selectedColor={color} onChange={setColor} />
           </Row>
         </Form>
       </Modal.Body>
@@ -94,7 +93,7 @@ const EditCounterModal = ({ id, isShowing, onHide }: EditCounterModalProps) => {
           <Col>
             <Button variant='outline-danger' onClick={handleDelete}>Delete</Button>
           </Col>
-          <Button variant='outline-secondary' onClick={onHide}>Close</Button>
+          <Button variant='outline-secondary' onClick={handleClose}>Close</Button>
           <Button variant='outline-primary' disabled={!isDataValid} onClick={handleSubmit}>Save</Button>
       </Modal.Footer>
     </Modal>

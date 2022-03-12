@@ -1,25 +1,32 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 
-export const colors = ['white', 'red', 'blue', 'green', 'turquoise', 'yellow', 'purple'];
-
 type ColorRadioButtonProps = {
-  color: string,
-  isChecked: boolean,
+  selectedColor: string,
   onChange: (color: string) => void,
 }
 
-const ColorRadioButton = ({ color, isChecked, onChange }: ColorRadioButtonProps) => (
-  <Form.Check
-    inline
-    className={`radio-${color}`}
-    type='radio'
-    name='color'
-    id={color}
-    label={color}
-    checked={isChecked}
-    onChange={() => onChange(color)}
-  />
-);
+const ColorRadioButtons = ({ selectedColor, onChange }: ColorRadioButtonProps) => {
+  const colors = ['white', 'red', 'blue', 'green', 'turquoise', 'yellow', 'purple'];
 
-export default ColorRadioButton;
+  return (
+    <div key='inline-radio'>
+      {
+        colors.map((color) =>
+          <Form.Check
+            inline
+            key={color}
+            className={`radio-${color}`}
+            type='radio'
+            name='color'
+            id={color}
+            checked={selectedColor === color}
+            onChange={() => onChange(color)}
+          />
+        )
+      }
+    </div>
+  );
+}
+
+export default ColorRadioButtons;

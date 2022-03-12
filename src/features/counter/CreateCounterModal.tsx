@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form, Col, Row } from 'react-bootstrap';
 import { useAppDispatch } from '../../app/hooks';
-import ColorRadioButton, { colors } from './ColorRadioButton';
+import ColorRadioButtons from './ColorRadioButton';
 import { addCounter } from './counterSlice';
 
 type CreateCounterModalProps = {
@@ -20,6 +20,7 @@ const CreateCounterModal = ({ isShowing, onHide }: CreateCounterModalProps) => {
     setName('');
     setAmount(0);
     setIncrements(1);
+    setColor('white');
     onHide();
   }
 
@@ -60,17 +61,7 @@ const CreateCounterModal = ({ isShowing, onHide }: CreateCounterModalProps) => {
           </Row>
           <Row className='mb-3'>
             <Form.Label>Color</Form.Label>
-            <div key='inline-radio'>
-              {
-                colors.map((option) =>
-                  <ColorRadioButton
-                    key={option}
-                    color={option}
-                    isChecked={option === color}
-                    onChange={setColor}
-                  />)
-              }
-            </div>
+            <ColorRadioButtons selectedColor={color} onChange={setColor} />
           </Row>
         </Form>
       </Modal.Body>
