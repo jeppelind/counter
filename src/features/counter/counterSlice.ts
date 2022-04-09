@@ -19,6 +19,13 @@ const counterSlice = createSlice({
     deleteCounter: countersAdapter.removeOne,
     updateCounter: countersAdapter.upsertOne,
     increment: countersAdapter.updateOne,
+    reorder(state, action) {
+      const { oldIndex, newIndex } = action.payload;
+      const idsCopy = [...state.ids];
+      const [movedId] = idsCopy.splice(oldIndex, 1);
+      idsCopy.splice(newIndex, 0, movedId);
+      state.ids = [...idsCopy];
+    },
   }
 });
 
@@ -32,6 +39,7 @@ export const {
   deleteCounter,
   updateCounter,
   increment,
+  reorder,
 } = counterSlice.actions;
 
 

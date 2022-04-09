@@ -13,7 +13,13 @@ const Header = () => {
     <>
       <Navbar sticky='top' variant='dark'>
         <Container>
-          <Navbar.Brand>Counter</Navbar.Brand>
+          <Navbar.Brand>
+            <img
+              src='/logo192.png'
+              height={30}
+              alt='Counter logo'
+            />
+          </Navbar.Brand>
           <Button variant='outline-light' onClick={handleShow}>Create new</Button>
         </Container>
       </Navbar>

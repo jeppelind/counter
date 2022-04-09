@@ -36,7 +36,7 @@ $colors: ('red': $red, 'blue': $blue, 'green': $green, 'yellow': $yellow,
   border: 1px solid shade-color($text, 50%);
   border-radius: 5px;
   margin-bottom: 15px;
-  transition: 0.3s;
+  transition: border-color 0.3s;
 }
 
 .counter:hover {
