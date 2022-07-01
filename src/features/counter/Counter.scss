@@ -27,6 +27,13 @@ $colors: ('red': $red, 'blue': $blue, 'green': $green, 'yellow': $yellow,
   }
 }
 
+.no-counters-parent {
+  display: flex;
+  height: 70vh;
+  align-items: center;
+  width: fit-content;
+}
+
 .counter-parent {
   padding-top: 20px;
 }
@@ -60,7 +67,7 @@ $colors: ('red': $red, 'blue': $blue, 'green': $green, 'yellow': $yellow,
 .counter .amount {
   padding-left: 15px;
   padding-right: 15px;
-  font-weight: 100;
+  font-weight: 400;
   font-size: 3.4rem;
   margin: 0;
   font-variant-numeric: tabular-nums;

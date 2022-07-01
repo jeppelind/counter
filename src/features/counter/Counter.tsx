@@ -42,7 +42,7 @@ const Counter = ({ id, index, onEdit }: CounterProps) => {
               </Col>
             </Row>
           </Col>
-          <Col>
+          <Col className='align-self-center'>
             <p className='text-center increase' onClick={handleIncrement}>+</p>
           </Col>
         </Row>

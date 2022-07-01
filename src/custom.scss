@@ -29,6 +29,14 @@ $input-focus-border-color: $input-bg;
 // Radio button
 $form-check-radio-border-radius: 5px;
 
+// Card
+$card-bg: shade-color($background, 5%);
+
+// Container
+$container-max-widths: (
+  xxl: 1140px
+);
+
 // Fonts
 $font-weight-base: 200;
 $main-font: 'Work Sans';
