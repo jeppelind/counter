@@ -34,7 +34,7 @@ const Counters = () => {
           <Card.Body>
             <Card.Title>No counters found!</Card.Title>
             <Card.Text>
-              There does not seem to be any counters saved
+              Create a new one to get started.
             </Card.Text>
           </Card.Body>
         </Card>

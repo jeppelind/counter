@@ -6,10 +6,10 @@ $colors: ('red': $red, 'blue': $blue, 'green': $green, 'yellow': $yellow,
 
 @each $name, $color in $colors {
   .counter.#{$name} {
-    border-color: shade-color($color, 45%);
+    border-color: shade-color($color, 30%);
   }
   .counter.#{$name}:hover {
-    border-color: shade-color($color, 35%);
+    border-color: shade-color($color, 10%);
   }
 
   .radio-#{$name} input {
@@ -40,7 +40,7 @@ $colors: ('red': $red, 'blue': $blue, 'green': $green, 'yellow': $yellow,
 
 .counter {
   background-color: tint-color($background, 8%);
-  border: 1px solid shade-color($text, 50%);
+  border: 2px solid shade-color($text, 50%);
   border-radius: 5px;
   margin-bottom: 15px;
   transition: border-color 0.3s;
@@ -51,6 +51,7 @@ $colors: ('red': $red, 'blue': $blue, 'green': $green, 'yellow': $yellow,
 }
 
 .counter .label {
+  font-weight: 400;
   margin: 0;
   margin-left: 15px;
   user-select: none;
@@ -67,7 +68,7 @@ $colors: ('red': $red, 'blue': $blue, 'green': $green, 'yellow': $yellow,
 .counter .amount {
   padding-left: 15px;
   padding-right: 15px;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 3.4rem;
   margin: 0;
   font-variant-numeric: tabular-nums;
@@ -76,6 +77,7 @@ $colors: ('red': $red, 'blue': $blue, 'green': $green, 'yellow': $yellow,
 
 .counter .increase {
   font-size: 3rem;
+  font-weight: 400;
   user-select: none;
   margin: 5px;
   margin-top: 3px;
@@ -83,8 +85,7 @@ $colors: ('red': $red, 'blue': $blue, 'green': $green, 'yellow': $yellow,
   transition: 0.3s;
 }
 .counter .increase:hover {
-  background-color: tint-color($background, 10%);
-  text-shadow: 0 0 2px tint-color($text, 25%);
+  background-color: tint-color($background, 20%);
   cursor: pointer;
 }
 
