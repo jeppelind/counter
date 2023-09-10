@@ -12,6 +12,10 @@ $colors: ('red': $red, 'blue': $blue, 'green': $green, 'yellow': $yellow,
     border-color: shade-color($color, 10%);
   }
 
+  .counter.#{$name} .label {
+    background: linear-gradient(shade-color($color, 15%), shade-color($color, 15%)) 0 90%/0 2px no-repeat;
+  }
+
   .radio-#{$name} input {
     background-color: $color;
     transition: 0.2s ease-out;
@@ -64,12 +68,11 @@ $colors: ('red': $red, 'blue': $blue, 'green': $green, 'yellow': $yellow,
   margin-left: 15px;
   user-select: none;
   width: fit-content;
-  background: linear-gradient(shade-color($text, 15%), shade-color($text, 15%)) 0 90%/0 1px no-repeat;
-  transition: .25s ease-out;
+  transition: .2s ease-out;
 }
 .counter .label:hover {
   text-shadow: 0 0 1px tint-color($text, 25%);
-  background-size: 100% 1px;
+  background-size: 100% 2px;
   cursor: pointer;
 }
 
