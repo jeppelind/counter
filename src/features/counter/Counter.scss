@@ -33,6 +33,14 @@ $colors: ('red': $red, 'blue': $blue, 'green': $green, 'yellow': $yellow,
   align-items: center;
   width: fit-content;
 }
+.no-counters-parent .items {
+  flex-direction: column;
+  align-items: center;
+}
+.no-counters-parent .icon {
+  font-size: 6rem;
+  margin-bottom: 20px;
+}
 
 .counter-parent {
   padding-top: 20px;

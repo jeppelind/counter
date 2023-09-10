@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import { Card, Container } from 'react-bootstrap';
+import { Button, Container, Row } from 'react-bootstrap';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
+import { FaCircleInfo } from 'react-icons/fa6';
 import './Counter.scss';
 import Counter from './Counter';
 import EditCounterModal from './EditCounterModal';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { reorder, selectCounterIds } from './counterSlice';
+import CreateCounterModal from './CreateCounterModal';
 
 const Counters = () => {
   const counterIds = useAppSelector(selectCounterIds);
   const [selectedId, setSelectedId] = useState('');
   const [showEditModal, setShowEditModal] = useState(false);
+  const [showCreateModal, setShowCreateModal] = useState(false);
   const dispatch = useAppDispatch();
 
   const handleDragEnd = (result: DropResult) => {
@@ -26,19 +29,22 @@ const Counters = () => {
   }
 
   const handleHideEdit = () => setShowEditModal(false);
+  const handleShowCreate = () => setShowCreateModal(true);
+  const handleHideCreate = () => setShowCreateModal(false);
 
   if (counterIds.length === 0) {
     return (
-      <Container className='no-counters-parent'>
-        <Card className='text-center'>
-          <Card.Body>
-            <Card.Title>No counters found!</Card.Title>
-            <Card.Text>
-              Create a new one to get started.
-            </Card.Text>
-          </Card.Body>
-        </Card>
-      </Container>
+      <>
+        <Container className='no-counters-parent'>
+          <Row className='items'>
+            <FaCircleInfo className='icon' />
+            <h4>No counters found</h4>
+            <p>Create new one to get started.</p>
+            <Button variant='outline-primary' size='lg' onClick={handleShowCreate}>Add counter</Button>
+          </Row>
+        </Container>
+        <CreateCounterModal isShowing={showCreateModal} onHide={handleHideCreate} />
+      </>
     )
   }
 

@@ -20,7 +20,7 @@ const Header = () => {
               alt='Counter logo'
             />
           </Navbar.Brand>
-          <Button variant='outline-light' onClick={handleShow}>Create new</Button>
+          <Button variant='outline-light' onClick={handleShow}>Add counter</Button>
         </Container>
       </Navbar>
       <CreateCounterModal isShowing={showCreateModal} onHide={handleHide} />
